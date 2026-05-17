@@ -1,36 +1,52 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f4;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container{
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f2f2f2;
 }
 
-.count{
-    font-size: 30px;
-    margin: 15px 0;
-    color: teal;
+.counter-box {
+  background: white;
+  padding: 25px;
+  width: 280px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
 }
 
-.btn{
-    padding: 10px 15px;
-    border: none;
-    background-color: teal;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.counter-box h1 {
+  margin-bottom: 15px;
 }
 
-.child-box{
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #eeeeee;
-    border-radius: 5px;
+.counter-box h2 {
+  margin-bottom: 20px;
+  font-size: 35px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0 20px;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }

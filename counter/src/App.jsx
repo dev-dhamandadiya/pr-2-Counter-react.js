@@ -1,50 +1,54 @@
-import { Component } from "react";
-import Counter from "./components/Counter.jsx";
-import "./App.css";
+import React, { useEffect, useState } from 'react'
+import "./App.css"
 
-class App extends Component {
+const App = () => {
 
-    constructor(props){
-        super(props)
+    const [count, setCount] = useState(0);
+    const [number , setnumber]= useState(0);
 
-        this.state = {
-            count : 0
-        }
+    const increment = () => {
+        setCount(count +( number <=0 ? 1 : number))
+        localStorage.setItem(('counter'), JSON.stringify(count));
+    };
 
-        this.handleCounter = this.handleCounter.bind(this)
-    }
+    const decrement = () => {
+        setCount(count - (number <=0 ? 1 :number));
+        localStorage.setItem(('counter'), JSON.stringify(count));
+    };
 
-    handleCounter(){
-        this.setState({
-            count : this.state.count + 1
-        })
-    }
+    const reset = () => {
+        setCount(0);
+    };
 
-    render(){
-        return(
-            <div className="container">
+    useEffect(() =>{
+        const oldcount = JSON.parse(localStorage.getItem(count));
+        if(oldcount)
+            setCount(oldcount)
+    },[])
 
-                <h2>Counter App</h2>
+return (
+  <div className="container">
+    <div className="counter-box">
+      <h1>Counter</h1>
 
-                <div className="count">
-                    {this.state.count}
-                </div>
+      <h2>{count}</h2>
 
-                <button
-                    type="button"
-                    className="btn"
-                    onClick={this.handleCounter}
-                >
-                    Count ++
-                </button>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setnumber(Number(e.target.value) || 1)}
+      />
 
-                <div className="child-box">
-                    <Counter name="Diya" />
-                </div>
+      <div className="btns">
+        <button onClick={increment}>+</button>
 
-            </div>
-        )
-    }
-};
+        <button onClick={decrement} disabled={count <= 0}>-</button>
 
-export default App;
+        <button onClick={reset}>Reset</button>
+      </div>
+    </div>
+  </div>
+);
+}
+
+export default App
